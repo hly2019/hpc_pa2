@@ -12,8 +12,8 @@ namespace {
 
 constexpr int DATA_RANGE = 100000;
 
-constexpr int TIMER_ROUNDS = 2;
-constexpr int TIMER_WARMUP = 1;
+constexpr int TIMER_ROUNDS = 1;
+constexpr int TIMER_WARMUP = 0;
 
 __global__ void __launch_bounds__(1024) genDataKernel(int n, int seed, int *data) {
     int64_t x = seed;
@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
     if (diffHost == 0) {
         printf("Validation Passed\n");
     } else {
-        printf("WRONG ANSWER!!!\n");
+        printf("WRONG ANSWER!!!, diff: %d\n", diffHost);
         // exit(-1);
     }
 
